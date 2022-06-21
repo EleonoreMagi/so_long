@@ -46,8 +46,8 @@ typedef struct s_map {
 typedef struct s_collectable {
 	int		collectable_count;
 	t_img	current_img;
-	t_img	img;
-	t_img	img_02;
+	t_img	img_1;
+	t_img	img_2;
 }	t_collectable;
 
 typedef struct s_player {
@@ -63,8 +63,8 @@ typedef struct s_attacker {
 	int		x;
 	int		y;
 	t_img	current_img;
-	t_img	img;
-	t_img	img_02;
+	t_img	img_1;
+	t_img	img_2;
 }	t_attacker;
 
 typedef struct s_wall {
@@ -74,8 +74,8 @@ typedef struct s_wall {
 
 typedef struct s_exit {
 	t_img	current_img;
-	t_img	img;
-	t_img	img_02;
+	t_img	img_1;
+	t_img	img_2;
 }	t_exit;
 
 typedef struct s_data {
@@ -85,7 +85,7 @@ typedef struct s_data {
 	int				exit_count;
 	int				moves_count;
 	t_map			*map;
-	t_img			background;
+	t_img			bgd;
 	t_exit			exit;
 	t_wall			wall;
 	t_player		player;
@@ -93,6 +93,6 @@ typedef struct s_data {
 	t_collectable	collectable;
 	int				row;
 	int				column;
-}
+}	t_data;
 
 #endif
