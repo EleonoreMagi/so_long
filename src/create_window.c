@@ -6,7 +6,7 @@
 /*   By: dmillan <dmillan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 21:43:50 by dmillan           #+#    #+#             */
-/*   Updated: 2022/06/22 23:28:55 by dmillan          ###   ########.fr       */
+/*   Updated: 2022/06/23 00:43:21 by dmillan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	initialize_address(t_data *data)
 	data->exit.img.addr = mlx_get_data_addr(data->exit.img.img,
 			&data->exit.img.bits_per_pixel, &data->exit.img.line_length,
 			&data->exit.img.endian);
+	data->exit.current_img = data->exit.img;
 	data->collectable.img_1.addr
 		= mlx_get_data_addr(data->collectable.img_1.img,
 			&data->collectable.img_1.bits_per_pixel,
@@ -27,19 +28,22 @@ void	initialize_address(t_data *data)
 			&data->collectable.img_2.bits_per_pixel,
 			&data->collectable.img_2.line_length,
 			&data->collectable.img_2.endian);
+	data->collectable.current_img = data->collectable.img_1;
 	data->wall.img.addr = mlx_get_data_addr(data->wall.img.img,
 			&data->wall.img.bits_per_pixel, &data->wall.img.line_length,
 			&data->wall.img.endian);
+	data->wall.current_img = data->wall.img;
 	data->player.img.addr = mlx_get_data_addr(data->player.img.img,
 			&data->player.img.bits_per_pixel,
 			&data->player.img.line_length, &data->player.img.endian);
+	data->player.current_img = data->player.img;
 	data->enemy.img_1.addr = mlx_get_data_addr(data->enemy.img_1.img,
 			&data->enemy.img_1.bits_per_pixel,
 			&data->enemy.img_1.line_length, &data->enemy.img_1.endian);
 	data->enemy.img_2.addr = mlx_get_data_addr(data->enemy.img_2.img,
 			&data->enemy.img_2.bits_per_pixel,
 			&data->enemy.img_2.line_length, &data->enemy.img_2.endian);
-	//data->enemy.current_img = data->enemy.img;
+	data->enemy.current_img = data->enemy.img_1;
 }
 
 void	initialize_window(t_data *data)
