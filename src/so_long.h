@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmillan <dmillan@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/22 21:41:37 by dmillan           #+#    #+#             */
+/*   Updated: 2022/06/22 21:41:37 by dmillan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -8,6 +20,10 @@
 
 # include <errno.h>
 # include <stddef.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h> 
+# include <stdio.h>
 
 # define TILESIZE 32
 
@@ -58,14 +74,14 @@ typedef struct s_player {
 	t_img	img;
 }	t_player;
 
-typedef struct s_attacker {
-	int		attacker_count;
+typedef struct s_enemy {
+	int		enemy_count;
 	int		x;
 	int		y;
 	t_img	current_img;
 	t_img	img_1;
 	t_img	img_2;
-}	t_attacker;
+}	t_enemy;
 
 typedef struct s_wall {
 	t_img	current_img;
@@ -74,8 +90,7 @@ typedef struct s_wall {
 
 typedef struct s_exit {
 	t_img	current_img;
-	t_img	img_1;
-	t_img	img_2;
+	t_img	img;
 }	t_exit;
 
 typedef struct s_data {
@@ -89,10 +104,34 @@ typedef struct s_data {
 	t_exit			exit;
 	t_wall			wall;
 	t_player		player;
-	t_attacker		attacker;
+	t_enemy			enemy;
 	t_collectable	collectable;
 	int				row;
 	int				column;
 }	t_data;
+
+void			initialize_map(t_data *data, int argc);
+void			parse_map(t_data *data, char *map);
+void			check_map(t_data *data);
+int				exit_game(char *err_message);
+void			pixel_put(t_img *img, int x, int y, int color);
+unsigned int	get_pixel_from_xpm(t_img xpm, int x, int y);
+void			hook_event(t_data *data);
+int				check_movement(t_data *data, int row, int col, char *move);
+void			load_data(t_data *data);
+void			draw_bgd(t_data *data, int col, int row);
+void			draw_player(t_data *data, int col, int row);
+void			draw_walls(t_data *data, int col, int row);
+void			draw_exit(t_data *data, int col, int row);
+void			draw_collectable(t_data *data, int col, int row);
+void			draw_enemy(t_data *data, int col, int row);
+int				enemy_animations(t_data *data);
+int				animate(t_data *data);
+void			draw_window(t_data *data);
+void			check_extension(char *map);
+int				check_rectangle(char *line, int column);
+void			check_enemy_movements(t_data *data);
+void			check_death(t_data *data);
+void			fill_enemy(t_data *data);
 
 #endif

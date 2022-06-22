@@ -1,32 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   animations.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmillan <dmillan@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/22 21:44:06 by dmillan           #+#    #+#             */
+/*   Updated: 2022/06/22 23:19:04 by dmillan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-int	attacker_animations(t_data *data)
+int	enemy_animations(t_data *data)
 {
 	static int	i;
 
 	if (i == 0)
-		data->attacker.current_img = data->attacker.img_01;
+		data->enemy.current_img = data->enemy.img_1;
 	if (i == 1)
-		data->attacker.current_img = data->attacker.img_02;
+		data->enemy.current_img = data->enemy.img_2;
 	i++;
 	if (i == 2)
 		i = 0;
-	push_data(data);
-	return (0);
-}
-
-int	wall_animations(t_data *data)
-{
-	static int	i;
-
-	if (i == 0)
-		data->wall.current_img = data->wall.img_01;
-	if (i == 1)
-		data->wall.current_img = data->wall.img_02;
-	i++;
-	if (i == 2)
-		i = 0;
-	push_data(data);
+	draw_window(data);
 	return (0);
 }
 
@@ -35,36 +32,19 @@ int	collectable_animations(t_data *data)
 	static int	i;
 
 	if (i == 0)
-		data->collectable.current_img = data->collectable.img_01;
+		data->collectable.current_img = data->collectable.img_1;
 	if (i == 5)
-		data->collectable.current_img = data->collectable.img_02;
+		data->collectable.current_img = data->collectable.img_2;
 	i++;
 	if (i == 10)
 		i = 0;
-	push_data(data);
+	draw_window(data);
 	return (0);
 }
 
-int	player_animations(t_data *data)
+int	animate(t_data *data)
 {
-	static int	i;
-
-	if (i == 0)
-		data->player.current_img = data->player.img_01;
-	if (i == 5)
-		data->player.current_img = data->player.img_02;
-	i++;
-	if (i == 10)
-		i = 0;
-	push_data(data);
-	return (0);
-}
-
-int	animations(t_data *data)
-{
-	attacker_animations(data);
-	wall_animations(data);
-	player_animations(data);
+	enemy_animations(data);
 	collectable_animations(data);
 	return (0);
 }

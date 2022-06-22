@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eleon <eleon@student.42.fr>                +#+  +:+       +#+        */
+/*   By: dmillan <dmillan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 23:15:51 by dmillan           #+#    #+#             */
-/*   Updated: 2022/01/10 06:33:59 by eleon            ###   ########.fr       */
+/*   Updated: 2022/06/22 23:44:09 by dmillan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-int	ft_isdigit(int c)
+int	ft_isdigits(int c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);

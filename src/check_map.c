@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmillan <dmillan@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/22 21:43:53 by dmillan           #+#    #+#             */
+/*   Updated: 2022/06/22 21:43:53 by dmillan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-void check_enemy_existance(t_data *data, int x, int y)
+void	check_enemy_existance(t_data *data, int x, int y)
 {
 	data->enemy.enemy_count++;
 	data->enemy.x = x;
@@ -9,7 +21,7 @@ void check_enemy_existance(t_data *data, int x, int y)
 
 void	check_death(t_data *data)
 {
-	if(data->enemy.x == data->player.x
+	if (data->enemy.x == data->player.x
 		&& data->enemy.y == data->player.y)
 	{
 		usleep(10000);
@@ -17,9 +29,9 @@ void	check_death(t_data *data)
 	}
 }
 
-int check_map_existance(t_data *data)
+int	check_map_existance(t_data *data)
 {
-	t_map *map;
+	t_map	*map;
 
 	map = data->map;
 	while (map)
@@ -30,7 +42,7 @@ int check_map_existance(t_data *data)
 			data->player.x = map->x;
 			data->player.y = map->y;
 		}
-		if (map->content == ENEMY)
+		if (map->content == ATTACKER)
 			check_enemy_existance(data, map->x, map->y);
 		if (map->content == COLLECTABLE)
 			data->collectable.collectable_count++;
@@ -44,7 +56,7 @@ int check_map_existance(t_data *data)
 	return (0);
 }
 
-void check_map_content(t_data *data)
+void	check_map_content(t_map *map, int col, int row)
 {
 	if (ft_strchr("01CPEA", map->content) == 0)
 		exit_game("Invalid characters used in the map.");

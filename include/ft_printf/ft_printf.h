@@ -6,7 +6,7 @@
 /*   By: dmillan <dmillan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 21:01:37 by eleon             #+#    #+#             */
-/*   Updated: 2022/01/11 03:57:06 by dmillan          ###   ########.fr       */
+/*   Updated: 2022/06/22 23:45:57 by dmillan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <stdint.h>
+# include "../libft/libft.h"
 
 typedef struct s_print
 {

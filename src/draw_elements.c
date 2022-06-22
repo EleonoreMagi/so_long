@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_elements.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dmillan <dmillan@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/22 21:43:46 by dmillan           #+#    #+#             */
+/*   Updated: 2022/06/22 22:00:22 by dmillan          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	draw_bgd(t_data *data, int col, int row)
@@ -14,7 +26,7 @@ void	draw_bgd(t_data *data, int col, int row)
 		{
 			color = get_pixel_from_xpm(data->bgd, x, y);
 			pixel_put(&data->img, x + (col * TILESIZE),
-						y + (row * TILESIZE), color);
+				y + (row * TILESIZE), color);
 			x++;
 		}
 		y++;
@@ -36,7 +48,7 @@ void	draw_player(t_data *data, int col, int row)
 			color = get_pixel_from_xpm(data->player.current_img, x, y);
 			if (color != 0xFF000000)
 				pixel_put(&data->img, x + (col * TILESIZE),
-						y + (row * TILESIZE), color);
+					y + (row * TILESIZE), color);
 			x++;
 		}
 		y++;
@@ -58,7 +70,7 @@ void	draw_walls(t_data *data, int col, int row)
 			color = get_pixel_from_xpm(data->wall.current_img, x, y);
 			if (color != 0xFF000000)
 				pixel_put(&data->img, x + (col * TILESIZE),
-						y + (row * TILESIZE), color);
+					y + (row * TILESIZE), color);
 			x++;
 		}
 		y++;
@@ -80,7 +92,7 @@ void	draw_exit(t_data *data, int col, int row)
 			color = get_pixel_from_xpm(data->exit.current_img, x, y);
 			if (color != 0xFF000000)
 				pixel_put(&data->img, x + (col * TILESIZE),
-						y + (row * TILESIZE), color);
+					y + (row * TILESIZE), color);
 			x++;
 		}
 		y++;
@@ -102,7 +114,7 @@ void	draw_collectable(t_data *data, int col, int row)
 			color = get_pixel_from_xpm(data->collectable.current_img, x, y);
 			if (color != 0xFF000000)
 				pixel_put(&data->img, x + (col * TILESIZE),
-						y + (row * TILESIZE), color);
+					y + (row * TILESIZE), color);
 			x++;
 		}
 		y++;

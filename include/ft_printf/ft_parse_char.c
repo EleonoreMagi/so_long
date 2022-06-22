@@ -6,7 +6,7 @@
 /*   By: dmillan <dmillan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 02:35:01 by eleon             #+#    #+#             */
-/*   Updated: 2022/01/10 23:29:10 by dmillan          ###   ########.fr       */
+/*   Updated: 2022/06/22 23:46:53 by dmillan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_parse_string(t_print *table)
 	str = va_arg(table->args, char *);
 	if (str == NULL)
 		str = "(null)";
-	if ((table->dot && table->prc > ft_strlen(str)) || !table->dot)
+	if ((table->dot && table->prc > (int)ft_strlen(str)) || !table->dot)
 		table->prc = ft_strlen(str);
 	if (!table->minus)
 	{
