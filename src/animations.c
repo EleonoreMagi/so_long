@@ -6,10 +6,10 @@ int	attacker_animations(t_data *data)
 
 	if (i == 0)
 		data->attacker.current_img = data->attacker.img_01;
-	if (i == 5)
+	if (i == 1)
 		data->attacker.current_img = data->attacker.img_02;
 	i++;
-	if (i == 10)
+	if (i == 2)
 		i = 0;
 	push_data(data);
 	return (0);
@@ -21,10 +21,10 @@ int	wall_animations(t_data *data)
 
 	if (i == 0)
 		data->wall.current_img = data->wall.img_01;
-	if (i == 5)
+	if (i == 1)
 		data->wall.current_img = data->wall.img_02;
 	i++;
-	if (i == 10)
+	if (i == 2)
 		i = 0;
 	push_data(data);
 	return (0);

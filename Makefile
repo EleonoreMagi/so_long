@@ -6,7 +6,7 @@ MLXFLAGS	= -framework OpenGL -framework Appkit
 
 LIBFT		= ./include/libft/libft.a
 FT_PRINTF	= ./include/ft_printf/libftprintf.a
-MLX			= ./mlx/libmlx.a
+MLX			= ./include/mlx/libmlx.a
 
 SRCS		= src/main.c \
 			src/initialize_map.c \
