@@ -6,7 +6,7 @@
 /*   By: dmillan <dmillan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 21:43:46 by dmillan           #+#    #+#             */
-/*   Updated: 2022/06/22 22:00:22 by dmillan          ###   ########.fr       */
+/*   Updated: 2022/06/26 00:15:55 by dmillan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	draw_player(t_data *data, int col, int row)
 		x = 0;
 		while (x < TILESIZE)
 		{
-			color = get_pixel_from_xpm(data->player.current_img, x, y);
+			color = get_pixel_from_xpm(data->player.img, x, y);
 			if (color != 0xFF000000)
 				pixel_put(&data->img, x + (col * TILESIZE),
 					y + (row * TILESIZE), color);
@@ -67,7 +67,7 @@ void	draw_walls(t_data *data, int col, int row)
 		x = 0;
 		while (x < TILESIZE)
 		{
-			color = get_pixel_from_xpm(data->wall.current_img, x, y);
+			color = get_pixel_from_xpm(data->wall.img, x, y);
 			if (color != 0xFF000000)
 				pixel_put(&data->img, x + (col * TILESIZE),
 					y + (row * TILESIZE), color);
@@ -89,7 +89,7 @@ void	draw_exit(t_data *data, int col, int row)
 		x = 0;
 		while (x < TILESIZE)
 		{
-			color = get_pixel_from_xpm(data->exit.current_img, x, y);
+			color = get_pixel_from_xpm(data->exit.img, x, y);
 			if (color != 0xFF000000)
 				pixel_put(&data->img, x + (col * TILESIZE),
 					y + (row * TILESIZE), color);

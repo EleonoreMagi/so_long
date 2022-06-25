@@ -6,7 +6,7 @@
 /*   By: dmillan <dmillan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 21:44:06 by dmillan           #+#    #+#             */
-/*   Updated: 2022/06/22 23:19:04 by dmillan          ###   ########.fr       */
+/*   Updated: 2022/06/26 00:07:28 by dmillan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	enemy_animations(t_data *data)
 
 	if (i == 0)
 		data->enemy.current_img = data->enemy.img_1;
-	if (i == 1)
+	if (i == 10)
 		data->enemy.current_img = data->enemy.img_2;
 	i++;
-	if (i == 2)
+	if (i == 20)
 		i = 0;
 	draw_window(data);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: dmillan <dmillan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 21:43:50 by dmillan           #+#    #+#             */
-/*   Updated: 2022/06/23 00:43:21 by dmillan          ###   ########.fr       */
+/*   Updated: 2022/06/26 00:17:02 by dmillan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	initialize_address(t_data *data)
 	data->exit.img.addr = mlx_get_data_addr(data->exit.img.img,
 			&data->exit.img.bits_per_pixel, &data->exit.img.line_length,
 			&data->exit.img.endian);
-	data->exit.current_img = data->exit.img;
 	data->collectable.img_1.addr
 		= mlx_get_data_addr(data->collectable.img_1.img,
 			&data->collectable.img_1.bits_per_pixel,
@@ -32,11 +31,9 @@ void	initialize_address(t_data *data)
 	data->wall.img.addr = mlx_get_data_addr(data->wall.img.img,
 			&data->wall.img.bits_per_pixel, &data->wall.img.line_length,
 			&data->wall.img.endian);
-	data->wall.current_img = data->wall.img;
 	data->player.img.addr = mlx_get_data_addr(data->player.img.img,
 			&data->player.img.bits_per_pixel,
 			&data->player.img.line_length, &data->player.img.endian);
-	data->player.current_img = data->player.img;
 	data->enemy.img_1.addr = mlx_get_data_addr(data->enemy.img_1.img,
 			&data->enemy.img_1.bits_per_pixel,
 			&data->enemy.img_1.line_length, &data->enemy.img_1.endian);
@@ -49,7 +46,7 @@ void	initialize_address(t_data *data)
 void	initialize_window(t_data *data)
 {
 	data->mlx_win = mlx_new_window(data->mlx, data->column * TILESIZE,
-			data->row * TILESIZE, "so_long");
+			data->row * TILESIZE, "So long: plan your escape!");
 	if (!data->mlx)
 		exit_game("Couldn't create new window");
 	data->img.img = mlx_new_image(data->mlx, data->column * TILESIZE,
@@ -66,12 +63,12 @@ void	draw_window(t_data *data)
 {
 	t_map	*map;
 
-	initialize_window(data);
 	map = data->map;
 	while (map)
 	{
 		draw_bgd(data, map->x, map->y);
-		draw_player(data, map->x, map->y);
+		if (map->content == PLAYER)
+			draw_player(data, map->x, map->y);
 		if (map->content == WALL)
 			draw_walls(data, map->x, map->y);
 		if (map->content == EXIT)

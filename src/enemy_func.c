@@ -6,7 +6,7 @@
 /*   By: dmillan <dmillan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 21:44:03 by dmillan           #+#    #+#             */
-/*   Updated: 2022/06/22 23:25:55 by dmillan          ###   ########.fr       */
+/*   Updated: 2022/06/25 23:33:29 by dmillan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	fill_enemy(t_data *data)
 	int	img_h;
 
 	data->enemy.img_1.img = mlx_xpm_file_to_image(data->mlx, \
-	"./src/img/bat.xpm", &img_w, &img_h);
+	"./src/img/bat-1.xpm", &img_w, &img_h);
 	data->enemy.img_2.img = mlx_xpm_file_to_image(data->mlx, \
 	"./src/img/bat-2.xpm", &img_w, &img_h);
 }

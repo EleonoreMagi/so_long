@@ -127,6 +127,7 @@ void			draw_collectable(t_data *data, int col, int row);
 void			draw_enemy(t_data *data, int col, int row);
 int				enemy_animations(t_data *data);
 int				animate(t_data *data);
+void			initialize_window(t_data *data);
 void			draw_window(t_data *data);
 void			check_extension(char *map);
 int				check_rectangle(char *line, int column);

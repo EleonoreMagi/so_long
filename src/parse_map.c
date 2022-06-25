@@ -6,7 +6,7 @@
 /*   By: dmillan <dmillan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 21:43:28 by dmillan           #+#    #+#             */
-/*   Updated: 2022/06/23 00:16:11 by dmillan          ###   ########.fr       */
+/*   Updated: 2022/06/25 23:39:33 by dmillan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	parse_map(t_data *data, char *map)
 	if (fd < 0)
 		exit_game("Cannot read map. Try again!");
 	check_extension(map);
-	printf("check!");
+	//printf("check!");
 	line = get_next_line(fd);
 	if (!line)
 		exit_game("No lines, invalid map. Try again!");

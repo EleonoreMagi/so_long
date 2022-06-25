@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 	parse_map(&data, argv[1]);
 	check_map(&data);
 	load_data(&data);
+	initialize_window(&data);
 	draw_window(&data);
 	mlx_loop_hook(data.mlx, animate, &data);
 	hook_event(&data);

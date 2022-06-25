@@ -6,7 +6,7 @@
 /*   By: dmillan <dmillan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 21:43:36 by dmillan           #+#    #+#             */
-/*   Updated: 2022/06/22 23:30:36 by dmillan          ###   ########.fr       */
+/*   Updated: 2022/06/26 00:29:07 by dmillan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,10 @@ int	hook_key(int keycode, t_data *data)
 	}
 	if (keycode == DOWN)
 		if (check_movement(data, data->player.x, data->player.y + 1, key(DOWN)))
+		{
+			ft_printf("check - down\n");
 			data->player.y += 1;
+		}
 	if (keycode == UP)
 		if (check_movement(data, data->player.x, data->player.y - 1, key(UP)))
 			data->player.y -= 1;
