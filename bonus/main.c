@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 	load_data(&data);
 	initialize_window(&data);
 	draw_window(&data);
+	mlx_loop_hook(data.mlx, animate, &data);
 	hook_event(&data);
 	mlx_loop(data.mlx);
 	return (0);

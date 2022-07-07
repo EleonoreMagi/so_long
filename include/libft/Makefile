@@ -1,5 +1,13 @@
 NAME			= libft.a
 
+Y = "\033[33m"
+R = "\033[31m"
+G = "\033[32m"
+B = "\033[34m"
+X = "\033[0m"
+UP = "\033[A"
+CUT = "\033[K"
+
 SRCS			=	ft_atoi.c  ft_itoa.c \
 					ft_bzero.c  ft_memchr.c  ft_memcmp.c \
 					ft_memcpy.c  ft_memmove.c  ft_memset.c \
@@ -26,23 +34,32 @@ CC				= gcc
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror
 
-all:			$(NAME)
+%.o : %.c
+	@$(CC) $(CFLAGS) -c -o $@ $<
+	@printf $(UP)$(CUT)
+	@echo $(Y)Compiling [$<]...$(X)
 
-.c.o : 			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+all: $(NAME)
 
-$(NAME):		$(OBJS) $(HEADERS)
-				ar rcs $(NAME) $(OBJS)
-
-bonus:			$(OBJS) $(BONUS_OBJS) $(HEADERS)
-				ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
-				@touch bonus
+$(NAME): $(OBJS)
+	@printf $(UP)$(CUT)
+	@echo $(Y)Compiling [$(NAME)]...$(X)
+	@ar -rcs $(NAME) $(OBJS)
+	@ranlib $(NAME)
+	@echo $(G)Finished [$(NAME)]$(X)
+	@echo
 
 clean:
-				$(RM) $(OBJS) $(BONUS_OBJS)
-				@$(RM) bonus
+	@rm -f $(OBJS)
+	@echo $(R)Removed libft .o$(X)
 
-fclean:			clean
-				$(RM) $(NAME)
+fclean: clean
+	@rm -f $(NAME)
+	@echo $(R)Removed [$(NAME)]$(X)
+
+bonus:			$(OBJS) $(BONUS_OBJS) $(HEADERS)
+				@ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+				@touch bonus
 
 re:				fclean all
 

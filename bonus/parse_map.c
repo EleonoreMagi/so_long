@@ -6,7 +6,7 @@
 /*   By: dmillan <dmillan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 21:43:28 by dmillan           #+#    #+#             */
-/*   Updated: 2022/06/28 20:13:01 by dmillan          ###   ########.fr       */
+/*   Updated: 2022/06/27 00:31:35 by dmillan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	initialize_map(t_data *data, int argc)
 	data->exit.exit_count = 0;
 	data->moves_count = 1;
 	data->player.player_count = 0;
+	data->enemy.enemy_count = 0;
 	data->collectable.collectable_count = 0;
 	data->map = NULL;
 }

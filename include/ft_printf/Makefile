@@ -15,23 +15,35 @@ CC = 	gcc
 
 CFLAGS 	= -c -Wall -Wextra -Werror
 
-RM		= rm -f
+Y = "\033[33m"
+R = "\033[31m"
+G = "\033[32m"
+B = "\033[34m"
+X = "\033[0m"
+UP = "\033[A"
+CUT = "\033[K"
 
 .c.o:
 			@$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 $(NAME): 	$(OBJS)
+			@printf $(UP)$(CUT)
+			@echo $(Y)Compiling [$(NAME)]...$(X)
 			@ar -rcs $(NAME) $(OBJS)
+			@echo $(G)Finished [$(NAME)]$(X)
+			@echo
 
 all: 		$(NAME)
 
 bonus:		all
 
 clean:		
-			rm -f $(OBJS)
+			@rm -f $(OBJS)
+			@echo $(R)Removed ft_print .o $(X)
 
 fclean: 	clean
-			$(RM) $(NAME)
+			@rm -f $(NAME)
+			@echo $(R)Removed [$(NAME)]$(X)
 
 re: 		fclean all
 

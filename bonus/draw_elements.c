@@ -6,7 +6,7 @@
 /*   By: dmillan <dmillan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 21:43:46 by dmillan           #+#    #+#             */
-/*   Updated: 2022/07/07 18:51:07 by dmillan          ###   ########.fr       */
+/*   Updated: 2022/07/07 18:52:25 by dmillan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ void	draw_walls(t_data *data, int col, int row)
 		while (x < TILESIZE)
 		{
 			color = get_pixel_from_xpm(data->wall.img, x, y);
-			pixel_put(&data->img, x + (col * TILESIZE),
+			if (color != 0xFF000000)
+				pixel_put(&data->img, x + (col * TILESIZE),
 					y + (row * TILESIZE), color);
 			x++;
 		}
@@ -89,7 +90,8 @@ void	draw_exit(t_data *data, int col, int row)
 		while (x < TILESIZE)
 		{
 			color = get_pixel_from_xpm(data->exit.img, x, y);
-			pixel_put(&data->img, x + (col * TILESIZE),
+			if (color != 0xFF000000)
+				pixel_put(&data->img, x + (col * TILESIZE),
 					y + (row * TILESIZE), color);
 			x++;
 		}

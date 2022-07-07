@@ -6,7 +6,7 @@
 /*   By: dmillan <dmillan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 21:43:36 by dmillan           #+#    #+#             */
-/*   Updated: 2022/06/28 03:58:22 by dmillan          ###   ########.fr       */
+/*   Updated: 2022/06/28 21:11:34 by dmillan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	check_movement(t_data *data, int row, int col, char *move)
 				move, data->moves_count++);
 			return (1);
 		}
+		check_death(data);
 		map = map->next;
 	}
 	return (0);
@@ -73,6 +74,9 @@ int	hook_key(int keycode, t_data *data)
 	if (keycode == LEFT)
 		if (check_movement(data, data->player.x - 1, data->player.y, key(LEFT)))
 			data->player.x -= 1;
+	if ((keycode == ESC || keycode == DOWN || keycode == UP || keycode == RIGHT
+			|| keycode == LEFT) && data->enemy.enemy_count >= 1)
+		check_enemy_movements(data);
 	draw_window(data);
 	return (0);
 }

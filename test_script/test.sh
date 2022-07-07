@@ -15,7 +15,7 @@ else
 fi
 
 # Checking for no input
-NO_INPUT_ERROR=$(./so_long  | grep "Not enough arguments, try again" | wc -l)
+NO_INPUT_ERROR=$(./so_long | grep "No map entered, please try again." | wc -l)
 
 if [ ${NO_INPUT_ERROR} -ge 1 ]
 then
@@ -26,7 +26,7 @@ fi
 
 # Checking for maps that do not exist
 NO_MAP="no_map"
-NO_MAP_ERROR=$(./so_long $NO_MAP | grep "Choose a correct map!" | wc -l)
+NO_MAP_ERROR=$(./so_long $NO_MAP | grep "Cannot read map. Try again!" | wc -l)
 
 if [ ${NO_MAP_ERROR} -ge 1 ]
 then
@@ -37,7 +37,7 @@ fi
 
 # Checking for invalid walls
 INVALID_WALL_MAP="./maps/maps_test/maps_invalid_map.ber"
-INVALID_WALL_MAP_ERROR=$(./so_long $INVALID_WALL_MAP | grep "Invalid walls, map is not fully covered with walls!" | wc -l)
+INVALID_WALL_MAP_ERROR=$(./so_long $INVALID_WALL_MAP | grep "Map is not covered with walls!" | wc -l)
 
 if [ ${INVALID_WALL_MAP_ERROR} -ge 1 ]
 then
@@ -48,7 +48,7 @@ fi
 
 # Checking for missing player (P)
 MISSING_P="./maps/maps_test/maps_missing_p.ber"
-MISSING_P_ERROR=$(./so_long $MISSING_P | grep "There are not enough players, exits or collectables!" | wc -l)
+MISSING_P_ERROR=$(./so_long $MISSING_P | grep "Incorrect number of players, exits or collectables!" | wc -l)
 
 if [ ${MISSING_P_ERROR} -ge 1 ]
 then
@@ -59,7 +59,7 @@ fi
 
 # Checking for missing exit (E)
 MISSING_E="./maps/maps_test/maps_missing_e.ber"
-MISSING_E_ERROR=$(./so_long $MISSING_E | grep "There are not enough players, exits or collectables!" | wc -l)
+MISSING_E_ERROR=$(./so_long $MISSING_E | grep "Incorrect number of players, exits or collectables!" | wc -l)
 
 if [ ${MISSING_E_ERROR} -ge 1 ]
 then
@@ -70,7 +70,7 @@ fi
 
 # Checking for missing collectables (COLLECTABLES)
 MISSING_C="./maps/maps_test/maps_missing_c.ber"
-MISSING_C_ERROR=$(./so_long $MISSING_C | grep "There are not enough players, exits or collectables!" | wc -l)
+MISSING_C_ERROR=$(./so_long $MISSING_C | grep "Incorrect number of players, exits or collectables!" | wc -l)
 
 if [ ${MISSING_C_ERROR} -ge 1 ]
 then
@@ -92,7 +92,7 @@ fi
 
 # Checking for empty map
 EMPTY_MAP="./maps/maps_test/maps_empty_map.ber"
-EMPTY_MAP_ERROR=$(./so_long $EMPTY_MAP | grep "No new line, choose a correct map!" | wc -l)
+EMPTY_MAP_ERROR=$(./so_long $EMPTY_MAP | grep "No lines, invalid map. Try again!" | wc -l)
 
 if [ ${EMPTY_MAP_ERROR} -ge 1 ]
 then

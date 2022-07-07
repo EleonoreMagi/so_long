@@ -12,6 +12,23 @@
 
 #include "so_long.h"
 
+void	check_enemy_existance(t_data *data, int x, int y)
+{
+	data->enemy.enemy_count++;
+	data->enemy.x = x;
+	data->enemy.y = y;
+}
+
+void	check_death(t_data *data)
+{
+	if (data->enemy.x == data->player.x
+		&& data->enemy.y == data->player.y)
+	{
+		usleep(5000);
+		exit_game("Player got caught! Try again!");
+	}
+}
+
 int	check_map_existance(t_data *data)
 {
 	t_map	*map;
@@ -25,6 +42,8 @@ int	check_map_existance(t_data *data)
 			data->player.x = map->x;
 			data->player.y = map->y;
 		}
+		if (map->content == ATTACKER)
+			check_enemy_existance(data, map->x, map->y);
 		if (map->content == COLLECTABLE)
 			data->collectable.collectable_count++;
 		if (map->content == EXIT)
@@ -39,7 +58,7 @@ int	check_map_existance(t_data *data)
 
 void	check_map_content(t_map *map, int col, int row)
 {
-	if (ft_strchr("01CPE", map->content) == 0)
+	if (ft_strchr("01CPEA", map->content) == 0)
 		exit_game("Invalid characters used in the map.");
 	if (map->x == 0 || map->y == 0
 		|| map->x == col - 1 || map->y == row - 1)

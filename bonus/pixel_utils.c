@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_file.c                                       :+:      :+:    :+:   */
+/*   pixel_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmillan <dmillan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/22 21:43:56 by dmillan           #+#    #+#             */
-/*   Updated: 2022/06/27 00:12:46 by dmillan          ###   ########.fr       */
+/*   Created: 2022/06/22 21:43:32 by dmillan           #+#    #+#             */
+/*   Updated: 2022/06/22 21:45:43 by dmillan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	check_rectangle(char *line, int column)
+void	pixel_put(t_img *img, int x, int y, int color)
 {
-	int	i;
+	char	*dest;
 
-	i = 0;
-	while (line[i])
-	{
-		if (line[i] == '\n')
-			break ;
-		i++;
-	}
-	if (i == column)
-		return (1);
-	else
-		return (0);
+	dest = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	*(unsigned int *)dest = color;
 }
 
-void	check_extension(char *map)
+unsigned int	get_pixel_from_xpm(t_img xpm, int x, int y)
 {
-	int	len;
+	char	*dest;
 
-	len = ft_strlen(map);
-	if (ft_strnstr(map, ".ber", len) == 0)
-		exit_game("Wrong extension, use a file with .ber.");
+	dest = xpm.addr + (y * xpm.line_length + x * (xpm.bits_per_pixel / 8));
+	return (*(unsigned int *)dest);
 }

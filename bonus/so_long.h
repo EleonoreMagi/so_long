@@ -74,29 +74,39 @@ typedef struct s_player {
 	t_img	img;
 }	t_player;
 
+typedef struct s_enemy {
+	int		enemy_count;
+	int		x;
+	int		y;
+	t_img	current_img;
+	t_img	img_1;
+	t_img	img_2;
+}	t_enemy;
+
 typedef struct s_wall {
 	t_img	img;
 }	t_wall;
-
-typedef struct s_bgd {
-	t_img	img;
-}	t_bgd;
 
 typedef struct s_exit {
 	int		exit_count;
 	t_img	img;
 }	t_exit;
 
+typedef struct s_bgd {
+	t_img	img;
+}	t_bgd;
+
 typedef struct s_data {
 	void			*mlx;
 	void			*mlx_win;
 	t_img			img;
 	int				moves_count;
-	t_bgd			bgd;
 	t_map			*map;
+	t_bgd			bgd;
 	t_exit			exit;
 	t_wall			wall;
 	t_player		player;
+	t_enemy			enemy;
 	t_collectable	collectable;
 	int				row;
 	int				column;
@@ -116,11 +126,16 @@ void			draw_player(t_data *data, int col, int row);
 void			draw_walls(t_data *data, int col, int row);
 void			draw_exit(t_data *data, int col, int row);
 void			draw_collectable(t_data *data, int col, int row);
+void			draw_enemy(t_data *data, int col, int row);
+int				enemy_animations(t_data *data);
+int				animate(t_data *data);
 void			initialize_window(t_data *data);
 void			draw_window(t_data *data);
 void			check_extension(char *map);
 int				check_rectangle(char *line, int column);
 void			check_enemy_movements(t_data *data);
+void			check_death(t_data *data);
+void			fill_enemy(t_data *data);
 void			display_counter_window(t_data *data);
 
 #endif

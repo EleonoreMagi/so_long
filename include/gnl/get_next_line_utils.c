@@ -6,7 +6,7 @@
 /*   By: dmillan <dmillan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 07:51:38 by dmillan           #+#    #+#             */
-/*   Updated: 2022/06/23 00:36:44 by dmillan          ###   ########.fr       */
+/*   Updated: 2022/06/27 00:39:19 by dmillan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ char	*ft_gnl_strjoin(char *s1, char *s2)
 	}
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	s = malloc(sizeof(char) *
-		(ft_gnl_strlen(s1) + (ft_gnl_strlen(s2) + 1)));
+	s = malloc(sizeof(char)
+			* (ft_gnl_strlen(s1) + (ft_gnl_strlen(s2) + 1)));
 	if (s == NULL)
 		return (NULL);
 	i = -1;

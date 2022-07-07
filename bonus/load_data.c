@@ -6,7 +6,7 @@
 /*   By: dmillan <dmillan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/22 21:43:39 by dmillan           #+#    #+#             */
-/*   Updated: 2022/07/07 18:48:00 by dmillan          ###   ########.fr       */
+/*   Updated: 2022/07/07 18:52:07 by dmillan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	load_data(t_data *data)
 	"./src/img/grass.xpm", &img_w, &img_h);
 	fill_player(data);
 	fill_collectables(data);
+	fill_enemy(data);
 	fill_exit(data);
 	fill_walls(data);
 }
